@@ -1,8 +1,6 @@
-# Project 1
+# Book Review
 
-Web Programming with Python and JavaScript
-
-This is the second project I completed from cs50. It's a book review website and I have fulfilled all requirements of project 1. Although it maybe some coarse, I have tried as hard as possible. It costs me three days to finish this project.
+It's a book review website. Users can signup and login. It has a lot of book information and users can search any book they want. Using a third-party API by Goodreads, book information and review rates can be shown. Users from this website can also give some comments.
 
 application.py is the FLASK_APP.
 books.csv is the source of books in SQL.
