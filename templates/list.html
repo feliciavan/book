@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    book reviews
+{% endblock %}
+{% block heading %}
+    book reviews
+{% endblock %}
+
+{% block body %}
+    <h3 style="font-weight:bold">search results</h3>
+    <p>
+        <div class="list-group">
+        {% for result in results %}
+            <a href="{{ url_for('result', book_id=result.book_id) }}" class="list-group-item list-group-item-action">
+              {{ result.isbn }}, {{ result.title }}, {{ result.author }}, {{ result.year }}
+            </a>
+        {% endfor %}
+        </div>
+    </p>
+    <p>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">log out</a>
+    </p>
+{% endblock %}

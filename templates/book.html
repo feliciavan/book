@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    book reviews
+{% endblock %}
+{% block heading %}
+    book reviews
+{% endblock %}
+
+
+{% block body %}
+
+<p>
+    <div class="card">
+        <h5 class="card-header">details of the book</h5>
+        <div class="card-body">
+            <p><span style="font-weight:bold;">isbn: </span>{{ book.isbn }},</p>
+            <p><span style="font-weight:bold;">title: </span>{{ book.title }},</p>
+            <p><span style="font-weight:bold;">author: </span>{{ book.author}},</p>
+            <p><span style="font-weight:bold;">year: </span>{{ book.year}}</p>
+        </div>
+    </div>
+</p>
+<p>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <h5 class="card-header">average rating from goodreads</h5>
+                <div class="card-body">
+                    {{ rating_gd }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <h5 class="card-header">number of ratings from goodreads</h5>
+                <div class="card-body">
+                    {{ count_gd }}
+                </div>
+            </div>
+        </div>
+    </div>
+</p>
+<p>
+    <h3 style="font-weight:bold">reviews</h3>
+
+    {% if not reviews %}
+        <div class="card">
+            <div class="card-body">
+                no review
+            </div>
+        </div>
+    {% else %}
+        {% for areview in reviews %}
+        <div class="card">
+            <div class="card-header">
+                {{areview.reviewer}}
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p><span style="font-weight:bold">review: </span>{{ areview.review }}</p>
+                    <p><span style="font-weight:bold">rating: </span>{{ areview.rating }}</p>
+                </blockquote>
+            </div>
+        </div>
+
+        {% endfor %}
+    {% endif %}
+</p>
+<p>
+    <h3 style="font-weight:bold">write your review</h3>
+        <form action="{{ url_for('result', book_id=book.book_id) }}" method="post">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">rating (on a scale of 1 to 5)</label>
+                <input class="form-control" name="rating" placeholder="rating">
+                <br/>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">review</label>
+                    <textarea class="form-control" name="review" rows="3" placeholder="review"></textarea>
+                </div>
+            </div>
+            <button class="btn btn-warning">submit</button>  <a href="{{ url_for('index') }}" class="btn btn-secondary">log out</a>
+        </form>
+</p>
+{% endblock %}

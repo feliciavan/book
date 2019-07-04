@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    book reviews
+{% endblock %}
+{% block heading %}
+    book reviews
+{% endblock %}
+
+{% block body %}
+
+    <form action="{{ url_for('results') }}" method="post">
+        <div class="form-group">
+          <input type="text" class="form-control" name="search" placeholder="enter anything">
+        </div>
+        <button class="btn btn-info">search</button>    <a href="{{ url_for('index') }}" class="btn btn-secondary">log out</a>
+    </form>
+
+{% endblock %}
